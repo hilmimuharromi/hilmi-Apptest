@@ -1,38 +1,161 @@
-.App {
-  text-align: center;
+:root {
+  --primary: #B7CADB;
+  --secondary: #FDF6EC;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.layout {
+  padding: 5% 5%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.container {
+  width: 20rem
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+button {
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+/* flex start*/
+
+.flex {
+  display: flex;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.wrap{
+  flex-wrap: wrap;
+}
+
+.nowrap{
+  flex-wrap: nowrap;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+
+/* Margin start*/
+
+.m-10 {
+  margin: 10px;
+}
+
+.mr-10 {
+  margin-right: 10px;
+}
+
+.ml-10 {
+  margin-left: 10px;
+}
+
+.mt-10 {
+  margin-top: 10px;
+}
+/* padding start*/
+
+.p-5px{
+  padding: 5px;
+}
+
+.p-10px {
+  padding: 10px;
+}
+
+.w-10 {
+  width: 10rem;
+}
+
+.w-20 {
+  width: 20rem
+}
+
+.w-30 {
+  width: 30rem
+}
+
+.w-100px {
+  width: 100px;
+}
+
+.w-50px {
+  width: 50px;
+}
+
+.h-100px {
+  height: 100px;
+}
+.h-50px {
+  height: 50px;
+}
+
+.rounded-sm {
+  border-radius: 0.3rem;
+}
+.rounded-md {
+  border-radius: 0.6rem;
+}
+
+.rounded-full {
+  border-radius: 100%;
+}
+
+.shadow {
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.shadow:hover {
+  box-shadow: rgba(0, 0, 0, 0.15) 5.95px 5.95px 6.6px;
+
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.bg-primary {
+  background-color: var(--primary);
+}
+
+.bg-secondary {
+  background-color: var(--secondary);
+}
+
+.modal-close{
+  display: none;
+}
+
+.modal-open{
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  top: 0;
+  left: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
 }
