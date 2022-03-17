@@ -7,17 +7,45 @@ const getListContacts = () => {
             const { data, status } = await axios(`${process.env.REACT_APP_API_URL}/contact`)
 
             if (status === 200) {
-                dispatch(setError(null))
+                dispatch(setError({
+                    path: '',
+                    message: ''
+                }))
                 dispatch(setContact(data.data))
             }
         } catch (err) {
-            dispatch(setError(err))
+            dispatch(setError({
+                path: 'get',
+                message: err.response.data.message
+            }))
         } finally {
             dispatch(setLoading(false))
         }
     }
 }
 
+const deleteContact = (id) => {
+    return async (dispatch) => {
+        try {
+            const { data } = await axios.delete(`${process.env.REACT_APP_API_URL}/contact/${id}`)
+            if(data) {
+                dispatch(getListContacts())
+            }
+        } catch (err) {
+            dispatch(setError({
+                path: 'delete',
+                message: err.response.data.message,
+                validation: err.response.data.validation
+            }))
+        } finally {
+            dispatch(setError({
+                path: '',
+                message: ''
+            }))
+        }
+    } 
+
+}
 const setContact = (data) => {
     return {
         type: 'SET_LIST_CONTACT', payload: data
@@ -32,5 +60,5 @@ const setError = (data) => {
 }
 
 export {
-    getListContacts
+    getListContacts, deleteContact
 }

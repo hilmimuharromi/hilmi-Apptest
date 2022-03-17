@@ -1,17 +1,7 @@
 :root {
   --primary: #B7CADB;
   --secondary: #FDF6EC;
-}
-
-
-.layout {
-  padding: 5% 5%;
-  display: flex;
-  justify-content: center;
-}
-
-.container {
-  width: 20rem
+  --danger:#E83A14
 }
 
 button {
@@ -23,6 +13,23 @@ button {
 a:link {
   text-decoration: none;
 }
+
+label{
+  font-size: small;
+  margin: 5px;
+}
+
+.layout {
+  padding-top: 20px;
+  min-width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  
+}
+
 
 /* flex start*/
 
@@ -38,8 +45,16 @@ a:link {
   justify-content: space-between;
 }
 
+.justify-end {
+  justify-content: flex-end;
+}
+
 .align-center {
   align-items: center;
+}
+
+.align-start {
+  align-items: flex-start;
 }
 
 .wrap{
@@ -72,6 +87,10 @@ a:link {
 .mt-10 {
   margin-top: 10px;
 }
+
+.mb-10 {
+  margin-bottom: 10px;
+}
 /* padding start*/
 
 .p-5px{
@@ -80,6 +99,10 @@ a:link {
 
 .p-10px {
   padding: 10px;
+}
+
+.p-20px {
+  padding: 20px;
 }
 
 .w-10 {
@@ -102,6 +125,29 @@ a:link {
   width: 50px;
 }
 
+.font-8 {
+  font-size: 0.8rem;
+} 
+.font-10 {
+  font-size: 1rem;
+}
+
+.font-12 {
+  font-size: 1.2rem;
+}
+
+.font-14 {
+  font-size: 1.4rem;
+}
+
+
+
+
+
+.bold {
+  font-weight: bold;
+} 
+
 .h-100px {
   height: 100px;
 }
@@ -120,8 +166,12 @@ a:link {
   border-radius: 100%;
 }
 
+.border-red {
+  border-color: red;
+}
+
 .shadow {
-  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  box-shadow: rgba(0.11, 0.11, 0.15, 0.15) 1.95px 1.95px 2.6px;
 }
 
 .shadow:hover {
@@ -141,21 +191,49 @@ a:link {
   background-color: var(--secondary);
 }
 
+.bg-danger {
+  background-color: var(--danger);
+}
+
 .modal-close{
   display: none;
 }
 
-.modal-open{
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
+.modal-open {
+  position: absolute;
+  background-color: var(--secondary);
+  border-radius: 0.6rem;
+  min-width: 20rem;
+  z-index: 1;
+}
+
+.modal-bg {
+  background-color: rgba(0,0,0,0.4);
+  min-width: 100vw;
+  min-height: 100vh;
   top: 0;
   left: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4);
+  right: 0;
+  bottom: 0;
+  position: absolute;
+}
+
+.modal-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-body {
+  padding: 10px;
+}
+
+.modal-confirmation {
+  z-index: 2;
+  background-color: var(--primary);
+  position: absolute;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 100px;
+  margin-left: 10px;
 }

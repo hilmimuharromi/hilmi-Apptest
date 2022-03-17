@@ -1,20 +1,34 @@
 import axios from 'axios'
-import { Action } from 'history'
 
-const addContact = (payload) => {
+const saveContact = (payload, id) => {
+    let params = id ? `contact/${id}` : 'contact'
     return async (dispatch) => {
-        
-        const image = await uploadImage(payload.photo)
-        const {data} = await await axios({
-            url: `${process.env.REACT_APP_API_URL}/contact`,
-            method: 'post',
-            data: {
-                ...payload,
-                photo: image
+        try {
+            let dataSubmit = payload
+            dispatch(setLoading(true))
+            let image = 'N/A'
+            if(payload.tempImage) {
+                image = await uploadImage(payload.tempImage)
+            } else if(!payload.tempImage && id) {
+                image = payload.photo
             }
-        })
-        console.log('hasil image ==>', data)
-        dispatch(setStatus('success'))
+            delete dataSubmit.tempImage
+            dataSubmit.photo = image
+            const {data} = await await axios({
+                url: `${process.env.REACT_APP_API_URL}/${params}`,
+                method: id ?'put':'post',
+                data: dataSubmit
+            })
+            dispatch(setStatus('success'))
+        } catch(err) {
+            dispatch(setError({
+                path: 'form',
+                message: err.response.data.message,
+                validation: err.response.data.validation
+            }))
+        } finally {
+            dispatch(setLoading(false))
+        }
     }
 }
 
@@ -28,19 +42,34 @@ const uploadImage = async (photo) => {
             data
         })
         if(result) {
-            console.log('result upload', result.data.data)
             return result.data.data.url
         }
     } catch (err) {
-        console.log('result error', err)
-
+        return 'N/A'
     }
 }
+
+const setFormContact = (data) => {
+    return { type: 'SET_FORM_CONTACT', payload: data };
+}
+
+const resetFormContact = () => {
+    return { type: 'RESET_FORM_CONTACT' };
+}
+
 
 const setStatus = (data) => {
     return { type: 'SET_STATUS', payload: data };
 }
 
+const setLoading = (data) => {
+    return { type: 'SET_LOADING', payload: data };
+}
+
+const setError = (data) => {
+    return { type: 'SET_ERROR_FORM', payload: data };
+}
+
 export {
-    addContact
+    saveContact, setFormContact, resetFormContact, setError
 }

@@ -1,7 +1,7 @@
-import AddContact from "./AddContact";
+import FormContact from "./FormContact";
 import Home from "./Home";
 
 export {
-    AddContact,
+    FormContact,
     Home
 }

@@ -1,7 +1,10 @@
 const initialState = {
     data: [],
     loading: false,
-    error: null
+    error: {
+        path: '',
+        message: ''
+    }
 };
 
 const ContactState = (state = initialState, action) => {

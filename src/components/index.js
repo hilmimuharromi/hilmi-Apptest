@@ -1,3 +1,3 @@
 import ContactCard from "./ContactCard";
-
-export {ContactCard}
+import ButtonUpload from "./ButtonUpload";
+export {ContactCard, ButtonUpload}
